@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const PORT = 3001;
-const userNotes = require('./db/db.json');
 const path = require('path');
+const userNotes = require('./db/db.json');
 
 
 //middleware
@@ -28,15 +28,29 @@ app.get('/notes', (req, res) =>
 );
 
 //Get Route for retrieve saved notes
-app.get('/api/notes', (req, res) => res.json(userNotes));
+app.get('/api/notes', (req, res) => {
+    res.json(userNotes)
 
-// get('/', (req, res) => {
-//     // console.info(`${req.method} request received for notes`);
-//     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
-// });
+});
+
+//Post route to add new entries to the db.jason
+app.post('/api/notes', (req, res) =>{
+
+    const{title,text}=req.body
+
+    let newNote={
+        title,
+        text,
+        id:uuid()
+    }
+
+    readAndAppend(newNote, './db/db.json');
+
+});
 
 
-
-
+app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, './public/index.html'))
+);
 
 app.listen(PORT, () => console.log(`Listening on PORT: http://localhost:${PORT}`));
