@@ -58,7 +58,7 @@ app.post('/api/notes', (req, res) =>{
     .catch(err=>console.log(err))
 
 });
-
+// delete route to remove entries to the db.jason
 app.delete('/api/notes/:id', (req,res)=>{
     const { id }= req.params
     readFromFile('./db/db.json', 'utf-8')
