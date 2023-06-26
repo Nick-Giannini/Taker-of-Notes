@@ -1,5 +1,4 @@
-# best-README-creator
-
+# 11 Express.js: Note Taker
 
 ## Description
 The purpose of this project was to use the new technologies we learned in class. By using the provided frontend code and the Express.js back end we were tasked with creating a note taking application. A user is able to save, view and delete note. This was then deployed to Heroku. The link to the Github repository and Heroku deployment are below.
